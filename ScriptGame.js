@@ -60,7 +60,7 @@ togglebtnEmpezar() {
   siguienteNivel() {
     this.subnivel = 0;
     this.iluminarSecuencia()
-    this.agregarEventosClick()
+    // this.agregarEventosClick() Fue removido de aqui por que permitia clikear mientras se iluminaba la secuencia
   }
   
   //secuencia para iluminar los botones
@@ -69,6 +69,7 @@ togglebtnEmpezar() {
       const color = this.numerosAcolor(this.secuencia[i])
       setTimeout(() => this.iluminarColor(color), 1000 * i )
     }
+    setTimeout(() => this.agregarEventosClick(), 1000 * this.level)
   }
   //relacionar los colores a los numeros
     numerosAcolor(numero) {
@@ -124,6 +125,7 @@ togglebtnEmpezar() {
             } else {
                 setTimeout(this.siguienteNivel, 1500)
                 this.uptadecountlvl()
+                this.eliminarEventosClick()
             }
         }
     } else {
